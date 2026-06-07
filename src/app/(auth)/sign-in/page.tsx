@@ -16,15 +16,8 @@ export default function SignInPage() {
     e.preventDefault()
     setError(null)
     setLoading(true)
-
     const { error } = await authClient.signIn.email({ email, password })
-
-    if (error) {
-      setError(error.message ?? 'Sign in failed')
-      setLoading(false)
-      return
-    }
-
+    if (error) { setError(error.message ?? 'Sign in failed'); setLoading(false); return }
     router.push('/dashboard')
   }
 
@@ -34,36 +27,16 @@ export default function SignInPage() {
         <h1 className="font-syne text-2xl font-bold text-text mb-1">Sign in</h1>
         <p className="text-text-muted text-sm mb-8">
           No account?{' '}
-          <Link href="/sign-up" className="text-accent hover:underline">
-            Sign up
-          </Link>
+          <Link href="/sign-up" className="text-accent hover:underline">Sign up</Link>
         </p>
-
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            className="bg-surface border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-faint focus:border-accent focus:outline-none transition-colors"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            className="bg-surface border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-faint focus:border-accent focus:outline-none transition-colors"
-          />
-
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required
+            className="bg-surface border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-faint focus:border-accent focus:outline-none transition-colors" />
+          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required
+            className="bg-surface border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-faint focus:border-accent focus:outline-none transition-colors" />
           {error && <p className="text-danger text-sm">{error}</p>}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-accent text-bg py-2.5 rounded-md text-sm font-semibold hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+          <button type="submit" disabled={loading}
+            className="bg-accent text-bg py-2.5 rounded-md text-sm font-semibold hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>

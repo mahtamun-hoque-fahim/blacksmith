@@ -5,29 +5,17 @@ function require(name: string): string {
 }
 
 export const env = {
-  // Database
-  databaseUrl: require('DATABASE_URL'),
-  databaseUrlUnpooled: require('DATABASE_URL_UNPOOLED'),
-
-  // Auth
-  betterAuthSecret: require('BETTER_AUTH_SECRET'),
-  betterAuthUrl: require('BETTER_AUTH_URL'),
-
-  // Anthropic — NEVER expose to client
-  anthropicApiKey: require('ANTHROPIC_API_KEY'),
-
-  // Upstash Redis
-  upstashRedisRestUrl: require('UPSTASH_REDIS_REST_URL'),
-  upstashRedisRestToken: require('UPSTASH_REDIS_REST_TOKEN'),
-
-  // Stripe
-  stripeSecretKey: require('STRIPE_SECRET_KEY'),
-  stripeWebhookSecret: require('STRIPE_WEBHOOK_SECRET'),
-  stripeProPriceId: require('STRIPE_PRO_PRICE_ID'),
-
-  // Free tier
-  freeTierLimit: parseInt(process.env.FREE_TIER_GENERATION_LIMIT ?? '5', 10),
-
-  // Public
-  appUrl: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
+  databaseUrl:              require('DATABASE_URL'),
+  databaseUrlUnpooled:      require('DATABASE_URL_UNPOOLED'),
+  betterAuthSecret:         require('BETTER_AUTH_SECRET'),
+  betterAuthUrl:            require('BETTER_AUTH_URL'),
+  googleGenerativeAiKey:    require('GOOGLE_GENERATIVE_AI_API_KEY'),
+  upstashRedisRestUrl:      require('UPSTASH_REDIS_REST_URL'),
+  upstashRedisRestToken:    require('UPSTASH_REDIS_REST_TOKEN'),
+  lemonSqueezyApiKey:       require('LEMONSQUEEZY_API_KEY'),
+  lemonSqueezyWebhookSecret:require('LEMONSQUEEZY_WEBHOOK_SECRET'),
+  lemonSqueezyStoreId:      require('LEMONSQUEEZY_STORE_ID'),
+  lemonSqueezyProVariantId: require('LEMONSQUEEZY_PRO_VARIANT_ID'),
+  freeTierLimit:            parseInt(process.env.FREE_TIER_GENERATION_LIMIT ?? '5', 10),
+  appUrl:                   process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
 }

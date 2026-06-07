@@ -1,5 +1,5 @@
 {
-  "name": "droidsmith",
+  "name": "blacksmith",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,9 +20,9 @@
     "drizzle-orm": "^0.40.0",
     "@neondatabase/serverless": "^0.10.0",
     "@upstash/redis": "^1.34.0",
-    "stripe": "^17.0.0",
+    "@google/generative-ai": "^0.21.0",
+    "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "jszip": "^3.10.1",
-    "@anthropic-ai/sdk": "^0.37.0",
     "lucide-react": "^0.400.0",
     "nanoid": "^5.0.0"
   },

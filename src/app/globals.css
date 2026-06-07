@@ -1,52 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fonts */
   --font-syne:  var(--font-syne);
   --font-onest: var(--font-onest);
   --font-mono:  var(--font-jetbrains-mono);
 
-  /* Surfaces */
   --color-bg:               #0a0a0a;
   --color-surface:          #111827;
   --color-surface-elevated: #1a2235;
   --color-border:           #1f2937;
-
-  /* Text */
   --color-text:             #f5f5f5;
   --color-text-muted:       #9ca3af;
   --color-text-faint:       #4b5563;
-
-  /* Brand */
   --color-accent:           #00e676;
   --color-accent-hover:     #00c964;
   --color-accent-faint:     #00e6761a;
-
-  /* Semantic */
   --color-success:          #22c55e;
   --color-warning:          #f59e0b;
   --color-danger:           #ef4444;
-  --color-info:             #3b82f6;
-
-  /* Code preview */
   --color-code-bg:          #0d1117;
   --color-code-border:      #21262d;
 }
 
-/* Base */
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-onest), system-ui, sans-serif;
 }
 
-/* Focus */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
