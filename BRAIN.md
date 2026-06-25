@@ -52,21 +52,21 @@ The `create-next-app` equivalent for Android — the thing a developer opens bef
 ## Current State
 
 ```
-Status: Alpha (Phase 1 restart — Blacksmith, Gemini 2.0 Flash, LemonSqueezy)
-Last updated: 2026-06-07
+Status: Alpha (Phase 2 in progress — generation engine)
+Last updated: 2026-06-25
 
 What works:
-- Project concept validated by Council (CONDITIONAL GO)
-- Stack locked (updated: Gemini 2.0 Flash + LemonSqueezy)
+- Phase 1 complete: Next.js 16, Better Auth, Drizzle schema (7 tables), Upstash Redis generation counter, Gemini 2.0 Flash client, LemonSqueezy webhook handler (HMAC-SHA256), proxy.ts, dashboard page (plan/usage/history), generate page stub
+- Stack confirmed in code — Gemini 2.0 Flash + LemonSqueezy + Better Auth
 - Monetization model locked (freemium, calendar-month generation limits)
+- Phase 2 started: FEATURE_CATALOG defined, prompt builder written, FeatureSelector component shipped
 
 What's broken or incomplete:
-- Phase 1 in progress
+- Generation engine (Phase 2): ArchSelector, UILayerSelector, CodePreview, GenerateForm, packager.ts, generateProject Server Action
 
 What's next (in spirit, not tasks):
-- Complete Phase 1 foundation
-- Build the generation engine (Gemini 2.0 Flash → Kotlin project files)
-- Ship MVP: form → zip → download, compiles on first try
+- Complete the generation engine: form → Gemini → JSZip → code preview → download
+- Ship MVP: open-in-Android-Studio, compiles first try
 ```
 
 ---
@@ -111,7 +111,9 @@ What's next (in spirit, not tasks):
 - JSZip runs on Node.js runtime — ensure no `export const runtime = 'edge'` in generation action file
 - Generated projects are Kotlin + Gradle Kotlin DSL + XML layouts or Jetpack Compose — user chooses at generation time
 - Code preview (file tree + sample file) must render before the download button appears — trust gate, not optional
+- Gemini API key env var is `GOOGLE_GENERATIVE_AI_API_KEY` — NOT `ANTHROPIC_API_KEY` (pre-pivot name; stack uses Gemini, not Claude)
+- Feature catalog (FEATURE_CATALOG, free and pro features, sanitizeInput) lives in `src/lib/generation/prompt.ts` — FeatureSelector and generateProject Server Action both import from there
 
 ---
 
-*Last updated by Singularity on 2026-06-07*
+*Last updated by Singularity on 2026-06-25*
