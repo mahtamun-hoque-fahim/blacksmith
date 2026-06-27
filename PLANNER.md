@@ -204,7 +204,7 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 ## Timeline / Phases
 
 ### Phase 1 — Foundation
-**Status: ✅ Complete**
+**Status: Complete**
 
 - [x] Next.js 16 project init (TypeScript strict, Tailwind 4, App Router)
 - [x] Better Auth setup (email/password, 7-day session expiry)
@@ -219,7 +219,7 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 - [x] Generate page stub — limit check + placeholder card
 
 ### Phase 2 — Generation Engine
-**Status: 🔨 In progress**
+**Status: In progress**
 
 - [x] `src/lib/generation/prompt.ts` — feature catalog (FEATURE_CATALOG) + sanitizeInput + buildGenerationPrompt
 - [x] `src/components/generator/FeatureSelector.tsx` — free/pro tile grid with lock states
@@ -241,7 +241,7 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 - [ ] `/dashboard?upgraded=true` banner
 
 ### Phase 4 — Marketing & Launch
-**Status: ✅ Complete**
+**Status: Complete**
 
 - [x] Landing page: hero, static demo preview, how-it-works steps, pricing strip, final CTA
 - [x] Pricing page: Free/Pro cards, feature comparison table, FAQ, bottom CTA
@@ -277,4 +277,4 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 
 **2026-06-06.** Generated projects output Kotlin + Gradle Kotlin DSL only. User selects XML Layouts or Jetpack Compose at generation time. Java and Groovy DSL are never emitted — this is a hard constraint in the Gemini prompt.
 
-**2026-06-25.** ⚠️ Stack pivot reflected in PLANNER.md. AI engine was `Claude API (claude-sonnet-4)` → now **Gemini 2.0 Flash** (`GOOGLE_GENERATIVE_AI_API_KEY`). Payments were `Stripe` → now **LemonSqueezy**. DB columns were `stripeCustomerId/stripeSubscriptionId` → now `lsCustomerId/lsSubscriptionId`. Webhook route was `/api/webhooks/stripe` → now `/api/webhooks/lemonsqueezy`. PLANNER.md was stale since 2026-06-07 BRAIN.md pivot update — corrected this session.
+**2026-06-25.** [!] Stack pivot reflected in PLANNER.md. AI engine was `Claude API (claude-sonnet-4)` → now **Gemini 2.0 Flash** (`GOOGLE_GENERATIVE_AI_API_KEY`). Payments were `Stripe` → now **LemonSqueezy**. DB columns were `stripeCustomerId/stripeSubscriptionId` → now `lsCustomerId/lsSubscriptionId`. Webhook route was `/api/webhooks/stripe` → now `/api/webhooks/lemonsqueezy`. PLANNER.md was stale since 2026-06-07 BRAIN.md pivot update — corrected this session.
