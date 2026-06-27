@@ -241,15 +241,16 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 - [ ] `/dashboard?upgraded=true` banner
 
 ### Phase 4 — Marketing & Launch
-**Status: ⏳ Pending**
+**Status: ✅ Complete**
 
-- [ ] Landing page: hero, feature demo, pricing table
-- [ ] Pricing page
-- [ ] Dashboard polish: generation history cards, plan badge
-- [ ] OG images via `@vercel/og`
-- [ ] Mobile responsiveness audit
-- [ ] Accessibility pass (WCAG 2.2 AA: keyboard nav, focus indicators)
-- [ ] Production deploy: Vercel + Cloudflare Pages smoke test
+- [x] Landing page: hero, static demo preview, how-it-works steps, pricing strip, final CTA
+- [x] Pricing page: Free/Pro cards, feature comparison table, FAQ, bottom CTA
+- [x] `Navbar.tsx` + `Footer.tsx` — shared marketing components
+- [x] `opengraph-image.tsx` — OG image via `next/og` (edge runtime, 1200×630)
+- [x] `layout.tsx` metadata: title template, OG/Twitter tags, `metadataBase`, robots
+- [x] Mobile responsiveness: responsive grid breakpoints throughout
+- [x] Accessibility: `aria-label`, `aria-labelledby`, `aria-hidden`, `role` attrs throughout
+- [ ] Production deploy: fill env vars → Vercel + Cloudflare Pages
 - [ ] Final smoke test: generate project → download → open in Android Studio → must compile
 
 ---

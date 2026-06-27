@@ -7,8 +7,32 @@ const onest        = Onest({ subsets: ['latin'], variable: '--font-onest', displ
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: 'Blacksmith — Android Project Generator',
-  description: 'Generate production-ready Android Studio Kotlin projects in seconds. Pick features, download, build.',
+  title: {
+    default:  'Blacksmith — Android Project Generator',
+    template: '%s | Blacksmith',
+  },
+  description:
+    'Generate production-ready Android Studio Kotlin projects in seconds. ' +
+    'Select architecture, UI layer, and features — download a .zip that compiles on the first try.',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL ?? 'https://blacksmith.mahtamun.com',
+  ),
+  openGraph: {
+    type:        'website',
+    title:       'Blacksmith — Android Project Generator',
+    description: 'Select features. Gemini generates your Kotlin project. Download and build.',
+    url:         '/',
+    siteName:    'Blacksmith',
+  },
+  twitter: {
+    card:        'summary_large_image',
+    title:       'Blacksmith — Android Project Generator',
+    description: 'Select features. Gemini generates your Kotlin project. Download and build.',
+  },
+  robots: {
+    index:  true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
