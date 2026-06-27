@@ -1,6 +1,10 @@
-# Droidsmith
+# Blacksmith
 
-Generate production-ready Android Studio Kotlin projects from a feature selection form.
+![Version](https://img.shields.io/github/v/release/mahtamun-hoque-fahim/blacksmith?style=flat-square&color=3DF49A)
+![License](https://img.shields.io/github/license/mahtamun-hoque-fahim/blacksmith?style=flat-square)
+![Stars](https://img.shields.io/github/stars/mahtamun-hoque-fahim/blacksmith?style=flat-square)
+
+Generate production-ready Android Studio Kotlin projects in seconds — pick features, Gemini builds it, download and build.
 
 ## Stack
 
