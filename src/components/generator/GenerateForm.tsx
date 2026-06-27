@@ -25,6 +25,7 @@ import { ArchSelector }      from './ArchSelector'
 import { CodePreview }       from './CodePreview'
 import { FeatureSelector }   from './FeatureSelector'
 import { UILayerSelector }   from './UILayerSelector'
+import { UpgradeModal }      from './UpgradeModal'
 
 // ── Props ──────────────────────────────────────────────────
 
@@ -52,6 +53,7 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
   } | null>(null)
   const [genError,     setGenError]     = useState<string | null>(null)
   const [limitReached, setLimitReached] = useState(false)
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false)
 
   // ── Usage tracking ─────────────────────────────────────────
   // Optimistically updated after a successful generation.
@@ -85,6 +87,7 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
         if (res.limitReached) {
           setLimitReached(true)
           setCount(limit)
+          setShowUpgradeModal(true)
         } else {
           setGenError(res.error ?? 'Generation failed. Please try again.')
         }
@@ -209,11 +212,11 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
         )}
       </div>
 
-      {/* Limit warning */}
+      {/* Limit warning — shown before submission when count is already at cap */}
       {(atLimit || limitReached) && (
         <div className="flex gap-3 items-start bg-warning/10 border border-warning/30 rounded-xl px-4 py-3.5">
           <AlertCircle size={16} className="text-warning mt-0.5 shrink-0" aria-hidden />
-          <div>
+          <div className="flex-1">
             <p className="text-sm font-semibold text-warning">
               You have used all {limit} free generations this month.
             </p>
@@ -221,6 +224,13 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
               Upgrade to Blacksmith Pro for unlimited projects and all pro features.
             </p>
           </div>
+          <button
+            type="button"
+            onClick={() => setShowUpgradeModal(true)}
+            className="shrink-0 text-xs font-semibold text-accent hover:underline"
+          >
+            Upgrade
+          </button>
         </div>
       )}
 
@@ -304,6 +314,14 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
           </p>
         )}
       </div>
+
+      {/* Upgrade modal — triggered by limit banner or limitReached action response */}
+      <UpgradeModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        count={count}
+        limit={limit}
+      />
     </div>
   )
 }
