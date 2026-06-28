@@ -82,7 +82,7 @@ export function UpgradeModal({ isOpen, onClose, count, limit }: Props) {
           type="button"
           onClick={handleUpgrade}
           disabled={isPending}
-          className="flex items-center justify-center gap-2 w-full bg-accent text-bg py-2.5 rounded-xl text-sm font-semibold hover:bg-accent-hover transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 w-full bg-accent text-bg py-2.5 rounded-xl text-sm font-semibold hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
         >
           {isPending ? (
             <>

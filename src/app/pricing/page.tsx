@@ -82,7 +82,7 @@ export default function PricingPage() {
         {/* Pricing cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-20">
           {/* Free card */}
-          <div className="bg-surface border border-border rounded-2xl p-8 flex flex-col">
+          <div className="bg-surface border border-border rounded-2xl p-8 flex flex-col transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30">
             <p className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-3">Free</p>
             <div className="flex items-end gap-1 mb-1">
               <span className="font-syne text-5xl font-bold text-text">$0</span>
@@ -92,7 +92,7 @@ export default function PricingPage() {
 
             <Link
               href="/sign-up"
-              className="block text-center border border-border text-text text-sm font-semibold py-3 rounded-xl hover:border-accent/50 transition-colors duration-150 mb-8"
+              className="block text-center border border-border text-text text-sm font-semibold py-3 rounded-xl hover:border-accent/50 transition-[transform,border-color] duration-150 active:scale-[0.97] mb-8"
             >
               Get started free
             </Link>
@@ -110,7 +110,7 @@ export default function PricingPage() {
           </div>
 
           {/* Pro card */}
-          <div className="bg-accent-faint border border-accent/40 rounded-2xl p-8 flex flex-col relative overflow-hidden">
+          <div className="bg-accent-faint border border-accent/40 rounded-2xl p-8 flex flex-col relative overflow-hidden transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/10">
             <div className="absolute inset-x-0 top-0 h-px bg-accent/60" aria-hidden />
 
             <div className="flex items-center gap-2 mb-3">
@@ -128,7 +128,7 @@ export default function PricingPage() {
 
             <Link
               href="/sign-up"
-              className="block text-center bg-accent text-bg text-sm font-semibold py-3 rounded-xl hover:bg-accent-hover transition-colors duration-150 mb-8"
+              className="block text-center bg-accent text-bg text-sm font-semibold py-3 rounded-xl hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97] mb-8"
             >
               Get Pro
             </Link>
@@ -238,7 +238,7 @@ export default function PricingPage() {
         <section className="mb-24 text-center">
           <Link
             href="/sign-up"
-            className="inline-flex items-center gap-2 bg-accent text-bg px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-accent-hover transition-colors duration-150"
+            className="inline-flex items-center gap-2 bg-accent text-bg px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97]"
           >
             <Zap size={15} aria-hidden />
             Start generating for free

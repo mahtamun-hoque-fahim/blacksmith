@@ -112,13 +112,13 @@ export default function HomePage() {
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <Link
               href="/sign-up"
-              className="bg-accent text-bg px-7 py-3 rounded-xl font-semibold hover:bg-accent-hover transition-colors duration-150 text-sm"
+              className="bg-accent text-bg px-7 py-3 rounded-xl font-semibold hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97] text-sm"
             >
               Start for free
             </Link>
             <Link
               href="/pricing"
-              className="bg-surface border border-border text-text px-7 py-3 rounded-xl font-semibold hover:border-accent/50 transition-colors duration-150 text-sm"
+              className="bg-surface border border-border text-text px-7 py-3 rounded-xl font-semibold hover:border-accent/50 transition-[transform,border-color] duration-150 active:scale-[0.97] text-sm"
             >
               View pricing
             </Link>
@@ -257,7 +257,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {/* Free */}
-            <div className="bg-surface border border-border rounded-2xl p-7 flex flex-col">
+            <div className="bg-surface border border-border rounded-2xl p-7 flex flex-col transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30">
               <div className="mb-6">
                 <p className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-2">Free</p>
                 <div className="flex items-end gap-1">
@@ -275,14 +275,14 @@ export default function HomePage() {
               </ul>
               <Link
                 href="/sign-up"
-                className="block text-center bg-surface border border-border text-text text-sm font-semibold py-2.5 rounded-xl hover:border-accent/50 transition-colors duration-150"
+                className="block text-center bg-surface border border-border text-text text-sm font-semibold py-2.5 rounded-xl hover:border-accent/50 transition-[transform,border-color] duration-150 active:scale-[0.97]"
               >
                 Start for free
               </Link>
             </div>
 
             {/* Pro */}
-            <div className="bg-accent-faint border border-accent/40 rounded-2xl p-7 flex flex-col relative overflow-hidden">
+            <div className="bg-accent-faint border border-accent/40 rounded-2xl p-7 flex flex-col relative overflow-hidden transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/10">
               {/* Glow */}
               <div className="absolute inset-x-0 top-0 h-px bg-accent/60" aria-hidden />
 
@@ -310,7 +310,7 @@ export default function HomePage() {
 
               <Link
                 href="/sign-up"
-                className="block text-center bg-accent text-bg text-sm font-semibold py-2.5 rounded-xl hover:bg-accent-hover transition-colors duration-150"
+                className="block text-center bg-accent text-bg text-sm font-semibold py-2.5 rounded-xl hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97]"
               >
                 Get Pro
               </Link>
@@ -337,7 +337,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/sign-up"
-              className="inline-flex items-center gap-2 bg-accent text-bg px-7 py-3 rounded-xl font-semibold hover:bg-accent-hover transition-colors duration-150 text-sm"
+              className="inline-flex items-center gap-2 bg-accent text-bg px-7 py-3 rounded-xl font-semibold hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97] text-sm"
             >
               <Zap size={15} aria-hidden />
               Start for free

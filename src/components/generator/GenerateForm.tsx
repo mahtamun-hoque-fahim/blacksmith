@@ -167,7 +167,7 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
           <button
             type="button"
             onClick={handleDownload}
-            className="flex items-center gap-2 bg-accent text-bg px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-hover transition-colors"
+            className="flex items-center gap-2 bg-accent text-bg px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97]"
           >
             <Download size={16} aria-hidden />
             Download .zip
@@ -298,9 +298,9 @@ export function GenerateForm({ initialCount, limit, isPro }: Props) {
           disabled={!canSubmit}
           aria-disabled={!canSubmit}
           className={[
-            'flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors duration-150',
+            'flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-[transform,background-color,opacity] duration-150',
             canSubmit
-              ? 'bg-accent text-bg hover:bg-accent-hover cursor-pointer'
+              ? 'bg-accent text-bg hover:bg-accent-hover cursor-pointer active:scale-[0.97]'
               : 'bg-surface border border-border text-text-faint cursor-not-allowed opacity-50',
           ].join(' ')}
         >

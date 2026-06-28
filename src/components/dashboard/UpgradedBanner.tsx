@@ -26,7 +26,7 @@ export function UpgradedBanner() {
   return (
     <div
       role="status"
-      className="flex items-start gap-3 bg-accent-faint border border-accent/30 rounded-xl px-4 py-3.5 mb-6"
+      className="flex items-start gap-3 bg-accent-faint border border-accent/30 rounded-xl px-4 py-3.5 mb-6 animate-fade-up"
     >
       <CheckCircle2
         size={16}

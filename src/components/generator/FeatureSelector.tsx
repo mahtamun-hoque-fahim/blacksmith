@@ -180,13 +180,13 @@ function FeatureTile({ feature, selected, disabled, onToggle }: FeatureTileProps
         .join(' ')}
       className={[
         // Base
-        'relative w-full rounded-2xl p-4 text-left transition-colors duration-150',
+        'relative w-full rounded-2xl p-4 text-left transition-[transform,background-color,border-color] duration-150',
         // State-dependent
         disabled
           ? 'bg-surface border border-border opacity-40 cursor-not-allowed'
           : selected
-          ? 'bg-accent-faint border border-accent cursor-pointer'
-          : 'bg-surface border border-border hover:border-accent/50 cursor-pointer',
+          ? 'bg-accent-faint border border-accent cursor-pointer active:scale-[0.97]'
+          : 'bg-surface border border-border hover:border-accent/50 cursor-pointer active:scale-[0.97]',
       ]
         .join(' ')}
     >

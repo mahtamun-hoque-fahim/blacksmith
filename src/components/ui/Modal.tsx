@@ -43,13 +43,13 @@ export function Modal({ isOpen, onClose, title, children }: Props) {
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-bg/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-bg/80 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
-      <div className="relative z-10 w-full max-w-sm bg-surface border border-border rounded-2xl shadow-xl">
+      <div className="relative z-10 w-full max-w-sm bg-surface border border-border rounded-2xl shadow-xl animate-scale-in">
         {/* Optional titled header */}
         {title && (
           <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-border">
@@ -58,7 +58,7 @@ export function Modal({ isOpen, onClose, title, children }: Props) {
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="text-text-muted hover:text-text transition-colors"
+              className="text-text-muted hover:text-text transition-[transform,color] duration-150 active:scale-90"
             >
               <X size={18} aria-hidden />
             </button>

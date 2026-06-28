@@ -67,7 +67,7 @@ export default async function DashboardPage({ searchParams }: Props) {
         </div>
         <Link
           href="/generate"
-          className="bg-accent text-bg px-4 py-2 rounded-md text-sm font-semibold hover:bg-accent-hover transition-colors"
+          className="bg-accent text-bg px-4 py-2 rounded-md text-sm font-semibold hover:bg-accent-hover transition-[transform,background-color] duration-150 active:scale-[0.97]"
         >
           New project
         </Link>
@@ -112,7 +112,7 @@ export default async function DashboardPage({ searchParams }: Props) {
               <span>{count} / {limit}</span>
             </div>
             <div className="h-1.5 bg-border rounded-full overflow-hidden">
-              <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${pct}%` }} />
+              <div className="h-full bg-accent rounded-full transition-[width] duration-300 ease-out" style={{ width: `${pct}%` }} />
             </div>
             {count >= limit && (
               <p className="text-xs text-warning mt-2">
