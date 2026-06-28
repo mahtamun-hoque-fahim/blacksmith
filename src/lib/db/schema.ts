@@ -76,10 +76,3 @@ export const generations = pgTable('generations', {
   uiLayer:      uiEnum('ui_layer').notNull(),
   createdAt:    timestamp('created_at').notNull().defaultNow(),
 })
-
-export const generationResets = pgTable('generation_resets', {
-  userId:     text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }).primaryKey(),
-  resetMonth: integer('reset_month').notNull(),
-  resetYear:  integer('reset_year').notNull(),
-  updatedAt:  timestamp('updated_at').notNull().defaultNow(),
-})

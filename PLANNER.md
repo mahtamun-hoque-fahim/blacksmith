@@ -149,13 +149,7 @@ Standard Better Auth tables — managed entirely by Better Auth.
 | uiLayer | enum | `xml \| compose` |
 | createdAt | timestamp | defaultNow |
 
-### generationResets
-| column | type | notes |
-|---|---|---|
-| userId | text PK FK → users.id | |
-| resetMonth | integer | current calendar month (1–12) |
-| resetYear | integer | current year |
-| updatedAt | timestamp | |
+> **Note (2026-06-27):** `generationResets` table was dropped. It was defined in the schema but never written to — monthly reset tracking relies entirely on Upstash Redis TTL (35-day key expiry), which already handles calendar-month resets correctly. Neon is NOT the source of truth for billing periods; Redis is.
 
 ---
 
@@ -208,7 +202,7 @@ All validated in `src/lib/env.ts`. Do not add vars without updating that file.
 
 - [x] Next.js 16 project init (TypeScript strict, Tailwind 4, App Router)
 - [x] Better Auth setup (email/password, 7-day session expiry)
-- [x] Drizzle schema: 7 tables (user, session, account, verification, subscriptions, generations, generationResets)
+- [x] Drizzle schema: 6 tables (user, session, account, verification, subscriptions, generations)
 - [x] Neon connection — pooled (neon-http) + unpooled
 - [x] Upstash Redis client + generation counter (monthly key `gen_count:{userId}:{YYYY-MM}`, 35-day TTL)
 - [x] Gemini 2.0 Flash client — lazy singleton (`getGemini()`, `getGenerationModel()`)

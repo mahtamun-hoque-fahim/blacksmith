@@ -12,27 +12,27 @@ Generate production-ready Android Studio Kotlin projects in seconds — pick fea
 - Tailwind CSS 4
 - Neon (PostgreSQL) + Drizzle ORM
 - Better Auth (email/password)
-- Claude API — server-side generation engine
+- Gemini 2.0 Flash — server-side generation engine
 - JSZip — server-side project packaging
 - Upstash Redis — generation rate limiting
-- Stripe — payments and subscription management
+- LemonSqueezy — payments and subscription management
 - Vercel (production), Cloudflare Pages (mirror)
 
 ## Prerequisites
 
 - Node 20+
 - A Neon project (two connection strings: pooled + unpooled)
-- Anthropic API key
+- Google AI (Gemini) API key — from https://aistudio.google.com
 - Upstash Redis database
-- Stripe account (with a Pro plan Price ID and webhook configured)
+- LemonSqueezy account (store ID, Pro plan variant ID, webhook secret)
 - Vercel account
 
 ## Local Setup
 
-1. Clone: `git clone https://github.com/mahtamun-hoque-fahim/droidsmith.git`
+1. Clone: `git clone https://github.com/mahtamun-hoque-fahim/blacksmith.git`
 2. Install: `npm install`
 3. Copy env: `cp .env.example .env.local` and fill in all values (see PLANNER.md → Env Vars)
-4. Apply migrations: `npx drizzle-kit migrate`
+4. Push schema: `npx drizzle-kit push`
 5. Run dev: `npm run dev`
 
 ## Env Vars
@@ -45,13 +45,13 @@ DATABASE_URL_UNPOOLED
 BETTER_AUTH_SECRET
 BETTER_AUTH_URL
 NEXT_PUBLIC_APP_URL
-ANTHROPIC_API_KEY
+GOOGLE_GENERATIVE_AI_API_KEY
 UPSTASH_REDIS_REST_URL
 UPSTASH_REDIS_REST_TOKEN
-STRIPE_SECRET_KEY
-STRIPE_WEBHOOK_SECRET
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-STRIPE_PRO_PRICE_ID
+LEMONSQUEEZY_API_KEY
+LEMONSQUEEZY_WEBHOOK_SECRET
+LEMONSQUEEZY_STORE_ID
+LEMONSQUEEZY_PRO_VARIANT_ID
 FREE_TIER_GENERATION_LIMIT
 ```
 
@@ -63,15 +63,21 @@ npm run build                 # production build
 npm run start                 # serve production build locally
 npm run lint                  # ESLint
 npx drizzle-kit generate      # generate migration from schema changes
-npx drizzle-kit migrate       # apply migrations to Neon
 npx drizzle-kit push          # push schema directly (dev only)
 npx drizzle-kit studio        # Drizzle Studio GUI
 ```
 
-## Stripe Webhook (local)
+## LemonSqueezy Webhook (local)
+
+LemonSqueezy does not provide a CLI forwarder. Use [smee.io](https://smee.io) or [ngrok](https://ngrok.com) to forward webhooks to your local server:
 
 ```bash
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+# smee.io (no account needed)
+npx smee-client --url https://smee.io/<your-channel> --target http://localhost:3000/api/webhooks/lemonsqueezy
+
+# or ngrok
+ngrok http 3000
+# then set your LemonSqueezy webhook URL to https://<ngrok-id>.ngrok.io/api/webhooks/lemonsqueezy
 ```
 
 ## Deploy
@@ -88,19 +94,28 @@ Verify env vars are set in **both** Vercel and Cloudflare dashboards before prom
 app/
   (auth)/           sign-in, sign-up
   (dashboard)/      protected routes: dashboard, generate
-  (marketing)/      landing, pricing
-  api/webhooks/     Stripe webhook (Node runtime)
+  api/
+    auth/           Better Auth handler
+    webhooks/
+      lemonsqueezy/ LemonSqueezy webhook (Node runtime)
 components/
-  ui/               primitives
-  generator/        FeatureSelector, CodePreview
-  layout/           Navbar, Footer
+  ui/               primitives (Modal)
+  generator/        FeatureSelector, ArchSelector, UILayerSelector,
+                    CodePreview, GenerateForm, UpgradeModal
+  dashboard/        UpgradedBanner
+  marketing/        Navbar, Footer
 lib/
-  auth/             Better Auth config
-  db/               Drizzle client + schema
-  generation/       Claude prompt builder + JSZip packager
+  auth/             Better Auth config + session helpers
+  db/               Drizzle client + schema (6 tables)
+  generation/       Gemini 2.0 Flash prompt builder, JSZip packager,
+                    generateProject Server Action
+  gemini/           Gemini 2.0 Flash lazy client
   redis/            Upstash client + generation counter
-  stripe/           Stripe client + actions
+  lemonsqueezy/     LemonSqueezy client, webhook helpers, actions
+  env.ts            Typed env validation
 drizzle/            migrations
+scripts/
+  scan_emojis.py    Waterborne emoji scanner
 ```
 
 For full architecture, user flows, DB schema, and API routes see **PLANNER.md**.

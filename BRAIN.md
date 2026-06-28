@@ -52,21 +52,29 @@ The `create-next-app` equivalent for Android — the thing a developer opens bef
 ## Current State
 
 ```
-Status: Alpha (Phase 2 in progress — generation engine)
-Last updated: 2026-06-25
+Status: Alpha — MVP shipped (all 4 phases complete)
+Last updated: 2026-06-27
 
 What works:
-- Phase 1 complete: Next.js 16, Better Auth, Drizzle schema (7 tables), Upstash Redis generation counter, Gemini 2.0 Flash client, LemonSqueezy webhook handler (HMAC-SHA256), proxy.ts, dashboard page (plan/usage/history), generate page stub
-- Stack confirmed in code — Gemini 2.0 Flash + LemonSqueezy + Better Auth
-- Monetization model locked (freemium, calendar-month generation limits)
-- Phase 2 started: FEATURE_CATALOG defined, prompt builder written, FeatureSelector component shipped
+- Phase 1 complete: Next.js 16, Better Auth, Drizzle schema (6 tables), Upstash Redis
+  generation counter, Gemini 2.0 Flash client, LemonSqueezy webhook handler (HMAC-SHA256),
+  proxy.ts, dashboard page (plan/usage/history), generate page
+- Phase 2 complete: FEATURE_CATALOG, sanitizeInput, buildGenerationPrompt, packager.ts,
+  generateProject Server Action, FeatureSelector, ArchSelector, UILayerSelector,
+  CodePreview (file tree + viewer), GenerateForm (full client orchestrator)
+- Phase 3 complete: createCheckoutUrl, getPortalUrl, UpgradeModal, UpgradedBanner,
+  billing portal link, /dashboard?upgraded=true flow
+- Phase 4 complete: landing page, pricing page, OG image, metadata, Navbar, Footer
+- gh-meta run: v0.1.0 released, About + topics set, LICENSE (All Rights Reserved),
+  CHANGELOG.md, README badges
+- Post-build: waterborne CLEAN, motion-hive done, valley-of-death done
 
 What's broken or incomplete:
-- Generation engine (Phase 2): ArchSelector, UILayerSelector, CodePreview, GenerateForm, packager.ts, generateProject Server Action
+- Env vars not filled (project not yet deployed)
+- Build not smoke-tested in CI (no node_modules in dev container)
 
 What's next (in spirit, not tasks):
-- Complete the generation engine: form → Gemini → JSZip → code preview → download
-- Ship MVP: open-in-Android-Studio, compiles first try
+- Fill env vars → npx drizzle-kit push → Vercel deploy → smoke test
 ```
 
 ---
