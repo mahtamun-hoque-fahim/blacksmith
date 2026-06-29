@@ -174,3 +174,44 @@ License: All Rights Reserved
 - Build not CI-verified in container (node_modules absent)
 - sentinel, airborne, humanizer, cave-man, motion-hive touch-up, council POST,
   ticket-checker still pending in post-build pipeline
+
+---
+
+### Session — 2026-06-29 | Agent: claude-firefox
+
+**Scope:** Post-build pipeline continuation — sentinel, airborne, humanizer, waterborne scoped re-scan
+
+**sentinel ⛔ CLEARED (prior session — logged here for completeness):**
+- Auth rate limiting added to sign-in / sign-up routes
+- drizzle-orm bumped past CVE-2026-39356
+- variant_id webhook guard added to LemonSqueezy handler
+- Security headers added (X-Frame-Options, X-Content-Type-Options, etc.)
+- Generic error messages normalized (no stack traces to client)
+
+**airborne CLEARED:**
+- robots.ts created (disallow /dashboard, /generate, /api/)
+- sitemap.ts created (index /, /pricing)
+- noindex set on sign-in, sign-up, dashboard, generate
+- Landing page: per-page metadata export (keyword-first title + description)
+- Pricing page: title + description + H1 updated
+- JSON-LD: SoftwareApplication schema on / and /pricing
+- Commit: f05b1e4
+
+**humanizer CLEARED (this session):**
+- page.tsx hero sub: removed em dash, significance puffery ("complete, compiling"), generic "in seconds" ending
+- page.tsx step 1: dropped "toggle" (AI verb)
+- page.tsx step 2: broke rule-of-three, replaced vague "proper wiring", gave developer voice
+- page.tsx step 3: removed em dash and "every time" tagline
+- pricing/page.tsx H1: removed em dash
+- pricing/page.tsx FAQ 1: removed "for any reason" filler hedge, trailing em dash
+- pricing/page.tsx FAQ 2: removed verbose "calendar month", humanized "removes the cap immediately"
+- pricing/page.tsx FAQ 4: replaced em dash with period, "Pinned. No version drift." as punchy ending
+- meta exports and JSON-LD untouched (machine-read, exempt from humanizer)
+- Commit: cfc9c06
+
+**waterborne scoped re-scan:** CLEAN — box-drawing comment chars (U+2500) confirmed not emoji
+
+**Known outstanding:**
+- Env vars not filled (not yet deployed)
+- Build not CI-verified
+- cave-man, motion-hive touch-up, council POST, ticket-checker pending
