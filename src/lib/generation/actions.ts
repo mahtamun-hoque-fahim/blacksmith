@@ -9,7 +9,9 @@
 //  layout/page segment that wraps this action.
 // ─────────────────────────────────────────────────────────
 
-import { nanoid } from 'nanoid'
+import { nanoid }     from 'nanoid'
+import { Ratelimit }  from '@upstash/ratelimit'
+import { Redis }      from '@upstash/redis'
 
 import { requireUser } from '@/lib/auth/session'
 import { getDb }        from '@/lib/db'
@@ -26,6 +28,16 @@ import {
   type GeneratedFile,
 } from './prompt'
 import { parseAndPackage } from './packager'
+
+// ── Per-user hourly generation rate limiter ────────────────
+// Secondary guard on top of the monthly free-tier cap.
+// Prevents a compromised Pro account or a script from exhausting
+// Gemini API quota in a burst. 20 generations per hour per user.
+const genRl = new Ratelimit({
+  redis:   Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(20, '60 m'),
+  prefix:  'blacksmith:rl:gen',
+})
 
 // ── Return types ───────────────────────────────────────────
 
@@ -75,6 +87,16 @@ export async function generateProject(
       const count = await getGenerationCount(userId)
       if (count >= limit) {
         return { success: false, limitReached: true }
+      }
+    }
+
+    // 4b ── Hourly burst guard (all users) ──────────────────
+    const { success: withinHourly } = await genRl.limit(userId)
+    if (!withinHourly) {
+      return {
+        success:      false,
+        limitReached: false,
+        error:        'Too many generations in a short time. Please wait a moment and try again.',
       }
     }
 
@@ -130,10 +152,7 @@ export async function generateProject(
     return {
       success:      false,
       limitReached: false,
-      error:
-        e instanceof Error
-          ? e.message
-          : 'An unexpected error occurred. Please try again.',
+      error:        'Generation failed. Please try again.',
     }
   }
 }

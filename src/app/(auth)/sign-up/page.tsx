@@ -18,7 +18,7 @@ export default function SignUpPage() {
     setError(null)
     setLoading(true)
     const { error } = await authClient.signUp.email({ name, email, password })
-    if (error) { setError(error.message ?? 'Sign up failed'); setLoading(false); return }
+    if (error) { setError('Unable to create account. Please try again.'); setLoading(false); return }
     router.push('/dashboard')
   }
 

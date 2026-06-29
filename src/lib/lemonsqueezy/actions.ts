@@ -50,9 +50,7 @@ export async function createCheckoutUrl(): Promise<
     return { url }
   } catch (e) {
     console.error('[createCheckoutUrl]', e)
-    return {
-      error: e instanceof Error ? e.message : 'Failed to start checkout. Please try again.',
-    }
+    return { error: 'Unable to start checkout. Please try again.' }
   }
 }
 
@@ -86,8 +84,6 @@ export async function getPortalUrl(): Promise<
     return { url }
   } catch (e) {
     console.error('[getPortalUrl]', e)
-    return {
-      error: e instanceof Error ? e.message : 'Failed to open billing portal.',
-    }
+    return { error: 'Unable to open billing portal. Please try again.' }
   }
 }

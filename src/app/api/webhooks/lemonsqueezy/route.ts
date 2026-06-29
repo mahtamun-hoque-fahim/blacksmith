@@ -48,7 +48,18 @@ export async function POST(req: NextRequest) {
 
   switch (eventName) {
     case 'subscription_created': {
-      if (!userId) break
+      if (!userId) {
+        console.warn('[ls webhook] subscription_created received without user_id in custom_data — subscription ID:', payload.data.id)
+        break
+      }
+      // Fix E2: only grant Pro if the variant matches our Pro plan.
+      // A subscription to any other product in the store would otherwise
+      // also trigger a Pro upgrade.
+      const expectedVariant = process.env.LEMONSQUEEZY_PRO_VARIANT_ID
+      if (attrs.variant_id !== undefined && String(attrs.variant_id) !== expectedVariant) {
+        console.warn('[ls webhook] subscription_created variant_id mismatch — got:', attrs.variant_id, 'expected:', expectedVariant)
+        break
+      }
       await db
         .insert(subscriptions)
         .values({

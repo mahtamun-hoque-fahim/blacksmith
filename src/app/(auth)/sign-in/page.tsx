@@ -17,7 +17,7 @@ export default function SignInPage() {
     setError(null)
     setLoading(true)
     const { error } = await authClient.signIn.email({ email, password })
-    if (error) { setError(error.message ?? 'Sign in failed'); setLoading(false); return }
+    if (error) { setError('Invalid email or password.'); setLoading(false); return }
     router.push('/dashboard')
   }
 
