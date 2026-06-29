@@ -5,6 +5,13 @@ import { authClient } from '@/lib/auth/client'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sign Up',
+  robots: { index: false, follow: false },
+}
+
 export default function SignUpPage() {
   const router = useRouter()
   const [name, setName]         = useState('')

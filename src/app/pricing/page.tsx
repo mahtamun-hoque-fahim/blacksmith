@@ -10,9 +10,9 @@ import { Footer } from '@/components/marketing/Footer'
 // ─────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Blacksmith Pricing — Free Android Project Generator',
   description:
-    'Blacksmith is free to start. Upgrade to Pro for unlimited Android project generation and all pro features.',
+    'Blacksmith is free to start — 5 Kotlin Android projects per month. Upgrade to Pro for $9/month: unlimited generations, Room DB migrations, GitHub Actions CI/CD, and multi-module Gradle.',
 }
 
 // ── Feature comparison table data ─────────────────────────
@@ -63,16 +63,42 @@ const FAQ = [
 
 // ── Page ───────────────────────────────────────────────────
 
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  'name': 'Blacksmith',
+  'applicationCategory': 'DeveloperApplication',
+  'url': 'https://blacksmith.mahtamun.com',
+  'offers': [
+    {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD',
+      'name': 'Free Plan',
+      'description': '5 Android projects per month. All core Kotlin features.',
+    },
+    {
+      '@type': 'Offer',
+      'price': '9',
+      'priceCurrency': 'USD',
+      'name': 'Pro Plan',
+      'description': 'Unlimited Android projects, Room DB Full with migrations, GitHub Actions CI/CD, Multi-Module Gradle structure.',
+    },
+  ],
+}
+
 export default function PricingPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
 
       <main className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="pt-20 pb-16 text-center">
           <h1 className="font-syne text-5xl font-bold text-text mb-4 tracking-tight">
-            Simple pricing
+            Generate Kotlin Android Projects — Free to Start
           </h1>
           <p className="text-text-muted text-lg max-w-xl mx-auto">
             Start free. Pay only when you need more.

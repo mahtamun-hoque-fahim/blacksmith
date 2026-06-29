@@ -10,6 +10,20 @@ import {
 import { Navbar } from '@/components/marketing/Navbar'
 import { Footer } from '@/components/marketing/Footer'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Android Project Generator for Kotlin — Blacksmith',
+  description:
+    'Stop writing Android boilerplate. Select architecture, UI layer, and features — ' +
+    'Blacksmith generates a complete Kotlin project that compiles in Android Studio on the first try. Free to start.',
+  openGraph: {
+    title:       'Android Project Generator for Kotlin — Blacksmith',
+    description: 'Select features. Gemini generates your Kotlin project. Download and build.',
+    url:         '/',
+  },
+}
+
 // ─────────────────────────────────────────────────────────
 //  app/page.tsx — Landing page
 //  Pure Server Component — no client JS.
@@ -80,9 +94,34 @@ const PRO_ITEMS = [
 ]
 
 // ── Page ───────────────────────────────────────────────────
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      'name': 'Blacksmith',
+      'url': 'https://blacksmith.mahtamun.com',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      'name': 'Blacksmith',
+      'applicationCategory': 'DeveloperApplication',
+      'operatingSystem': 'Web',
+      'url': 'https://blacksmith.mahtamun.com',
+      'description': 'Android project generator that creates production-ready Kotlin projects from a feature selection form.',
+      'offers': [
+        { '@type': 'Offer', 'price': '0',  'priceCurrency': 'USD', 'name': 'Free Plan' },
+        { '@type': 'Offer', 'price': '9',  'priceCurrency': 'USD', 'name': 'Pro Plan'  },
+      ],
+    },
+  ],
+}
+
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
 
       <main>

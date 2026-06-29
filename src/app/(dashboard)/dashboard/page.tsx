@@ -11,6 +11,13 @@ import { getDb }                               from '@/lib/db'
 import { generations }                         from '@/lib/db/schema'
 import { UpgradedBanner }                      from '@/components/dashboard/UpgradedBanner'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  robots: { index: false, follow: false },
+}
+
 // ── Inline Server Actions ──────────────────────────────────
 
 async function handleUpgrade() {
