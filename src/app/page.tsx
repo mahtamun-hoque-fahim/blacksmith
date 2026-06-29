@@ -59,17 +59,17 @@ const STEPS = [
   {
     icon:  Layers,
     title: 'Select your stack',
-    body:  'Choose architecture (MVVM or Clean), UI layer (Compose or XML), and toggle the features you need.',
+    body:  'Choose architecture (MVVM or Clean), UI layer (Compose or XML), and the features you need.',
   },
   {
     icon:  Sparkles,
     title: 'Gemini builds it',
-    body:  'Gemini 2.0 Flash generates every Kotlin file with correct versions, proper wiring, and no placeholders.',
+    body:  'Gemini 2.0 Flash generates every file in the project. Library versions are pinned to combinations that work. No placeholders, no stubs.',
   },
   {
     icon:  Download,
     title: 'Download and run',
-    body:  'Open the .zip in Android Studio. It compiles on the first try — every time.',
+    body:  'Unzip and open in Android Studio. It compiles on the first try.',
   },
 ]
 
@@ -142,9 +142,9 @@ export default function HomePage() {
 
           {/* Sub */}
           <p className="text-text-muted text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Select your architecture, UI layer, and features.
-            Blacksmith generates a complete, compiling Kotlin project —
-            download and build in seconds.
+            Tell Blacksmith what you need: architecture, UI layer, features.
+            It generates the entire Kotlin project.
+            Download the zip, open it in Android Studio, and it builds.
           </p>
 
           {/* CTAs */}

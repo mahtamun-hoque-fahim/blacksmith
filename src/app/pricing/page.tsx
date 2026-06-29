@@ -45,11 +45,11 @@ const COMPARISON: Row[] = [
 const FAQ = [
   {
     q: 'Does it actually compile on the first try?',
-    a: "Yes. The Gemini prompt specifies exact version combinations (AGP 8.2.2, Kotlin 1.9.24, Gradle 8.6, Compose BOM 2024.02.00) that are known to work together. If for any reason a generated project doesn't build, regenerate — it's free.",
+    a: "Yes. The Gemini prompt specifies exact version combinations (AGP 8.2.2, Kotlin 1.9.24, Gradle 8.6, Compose BOM 2024.02.00) that are known to work together. If a project doesn't build, regenerate. It's free.",
   },
   {
     q: 'What happens when I hit the free tier limit?',
-    a: "You'll see an upgrade prompt in the generator. Your limit resets at the start of each calendar month. Upgrading to Pro removes the cap immediately.",
+    a: "You'll see an upgrade prompt when you hit the limit. It resets each month. Upgrade to Pro and the cap is gone.",
   },
   {
     q: 'Can I cancel Pro any time?',
@@ -57,7 +57,7 @@ const FAQ = [
   },
   {
     q: 'What Kotlin and Gradle versions does it use?',
-    a: 'Always: Kotlin 1.9.24, AGP 8.2.2, Gradle 8.6, Compose BOM 2024.02.00, Room 2.6.1, Retrofit 2.9.0, Hilt 2.51.1. These are pinned — no version drift.',
+    a: 'Always: Kotlin 1.9.24, AGP 8.2.2, Gradle 8.6, Compose BOM 2024.02.00, Room 2.6.1, Retrofit 2.9.0, Hilt 2.51.1. Pinned. No version drift.',
   },
 ]
 
@@ -98,7 +98,7 @@ export default function PricingPage() {
         {/* Header */}
         <div className="pt-20 pb-16 text-center">
           <h1 className="font-syne text-5xl font-bold text-text mb-4 tracking-tight">
-            Generate Kotlin Android Projects — Free to Start
+            Generate Kotlin Android Projects. Free to start.
           </h1>
           <p className="text-text-muted text-lg max-w-xl mx-auto">
             Start free. Pay only when you need more.
