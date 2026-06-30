@@ -215,3 +215,41 @@ License: All Rights Reserved
 - Env vars not filled (not yet deployed)
 - Build not CI-verified
 - cave-man, motion-hive touch-up, council POST, ticket-checker pending
+
+---
+
+### Session — 2026-06-30 | Agent: claude-firefox
+
+**Scope:** Post-build pipeline continuation — humanizer, waterborne scoped re-scan, cave-man
+
+**humanizer CLEARED (this session):**
+- page.tsx: 4 prose changes (hero sub, 3 step bodies) — em dashes, rule-of-three, AI puffery stripped
+- pricing/page.tsx: 4 changes (H1 em dash, FAQ 1 hedge, FAQ 2 corp phrasing, FAQ 4 em dash)
+- All metadata/JSON-LD untouched (machine-read, exempt)
+- Commit: cfc9c06
+
+**waterborne scoped re-scan:** CLEAN — box-drawing comment chars (U+2500) false-positived, confirmed not emoji
+
+**cave-man CLEARED (this session):**
+- Pages scanned: 2 marketing (/ and /pricing), 4 other (sign-in, sign-up, dashboard, generate)
+- Zones already correct: 1 — demo preview HAS-ART (intentional coded product mock)
+- Zones needing art: 5 — hero, how-it-works (×3 steps merged), final CTA, dashboard empty state
+- Auth pages (sign-in, sign-up): NEEDS-ART noted but require layout restructure, skipped for now
+- Pricing page: KEEP-FLAT across all zones
+
+IMAGE-BRIEF slots inserted (grep -r IMAGE-BRIEF: src/ returns 6 lines):
+  hero-illustration  | 1:1  | app/page.tsx:179         — abstract 3D Android device silhouette, accent glow, hero right side
+  step-01-art        | 4:3  | app/page.tsx:268         — feature selector tile grid illustration
+  step-02-art        | 4:3  | app/page.tsx:269         — Kotlin code streaming / AI generation
+  step-03-art        | 4:3  | app/page.tsx:270         — Android Studio BUILD SUCCESSFUL window
+  cta-bg             | 16:9 | app/page.tsx:385         — faint background illustration for CTA banner
+  empty-01           | 1:1  | dashboard/page.tsx:143   — friendly empty state Android/Kotlin graphic
+
+All placeholders: dashed border + bg-surface/40, aria-hidden, data-image-slot attribute.
+Commit: eb12066
+
+**Known outstanding:**
+- motion-hive touch-up (scoped — new data-image-slot placeholders only)
+- council POST
+- ticket-checker
+- Actual artwork for 6 slots — Fahim's responsibility
