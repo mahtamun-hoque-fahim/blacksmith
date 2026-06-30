@@ -140,6 +140,12 @@ export default async function DashboardPage({ searchParams }: Props) {
 
       {recent.length === 0 ? (
         <div className="bg-surface border border-border rounded-lg p-10 text-center">
+          {/* IMAGE-BRIEF: empty-01 | 1:1 | small friendly 2D illustration — abstract Android phone outline with a Kotlin spark symbol, accent-tinted on dark bg-surface, centered composition, communicates "nothing here yet, start building" without being sad */}
+          <div
+            data-image-slot="empty-01"
+            aria-hidden
+            className="w-20 h-20 mx-auto mb-4 rounded-2xl border border-dashed border-white/10 bg-surface/60"
+          />
           <Code2 size={24} className="text-text-faint mx-auto mb-3" aria-hidden />
           <p className="text-text-muted text-sm">No projects yet.</p>
           <Link href="/generate" className="inline-block mt-3 text-accent text-sm hover:underline">

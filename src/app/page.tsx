@@ -126,7 +126,7 @@ export default function HomePage() {
 
       <main>
         {/* ── Hero ─────────────────────────────────────── */}
-        <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
+        <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center relative overflow-hidden">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-accent-faint border border-accent/30 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-8 uppercase tracking-widest">
             <Zap size={11} aria-hidden />
@@ -175,6 +175,13 @@ export default function HomePage() {
               </span>
             ))}
           </div>
+
+          {/* IMAGE-BRIEF: hero-illustration | 1:1 | abstract 3D illustration — glowing Android device silhouette with Kotlin code lines radiating inward, dark bg-surface card, accent volumetric glow emanating from center, floating depth layers, transparent outer edges bleeding into page bg, no baked-in text */}
+          <div
+            data-image-slot="hero-illustration"
+            aria-hidden
+            className="hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 w-64 h-64 rounded-2xl border border-dashed border-white/10 bg-surface/20 pointer-events-none"
+          />
         </section>
 
         {/* ── Demo preview ─────────────────────────────── */}
@@ -258,11 +265,19 @@ export default function HomePage() {
             How it works
           </h2>
 
+          {/* IMAGE-BRIEF: step-01-art | 4:3 | flat 2D illustration — styled feature selector tile grid, accent-highlighted "MVVM" and "Retrofit" chips selected, dark bg-surface, minimal clean design, no text */}
+          {/* IMAGE-BRIEF: step-02-art | 4:3 | flat 2D illustration — Kotlin function signatures streaming downward with accent glow spark at source, suggests AI code generation in progress, dark bg-surface, no text */}
+          {/* IMAGE-BRIEF: step-03-art | 4:3 | flat 2D illustration — Android Studio window with green BUILD SUCCESSFUL bar, project file tree visible on left, accent checkmark, dark bg-surface, no text */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {STEPS.map((step, i) => {
               const Icon = step.icon
               return (
                 <div key={step.title} className="flex flex-col gap-4">
+                  <div
+                    data-image-slot={`step-0${i + 1}-art`}
+                    aria-hidden
+                    className="aspect-[4/3] w-full rounded-xl border border-dashed border-white/10 bg-surface/40"
+                  />
                   <div className="flex items-center gap-3">
                     <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-accent-faint border border-accent/20 shrink-0">
                       <Icon size={16} className="text-accent" aria-hidden />
@@ -367,6 +382,12 @@ export default function HomePage() {
         <section className="max-w-5xl mx-auto px-6 pb-24">
           <div className="bg-surface border border-border rounded-2xl p-10 text-center relative overflow-hidden">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" aria-hidden />
+            {/* IMAGE-BRIEF: cta-bg | 16:9 | abstract background illustration — faint grid of interconnected Kotlin file icons at ~10% opacity, accent-tinted, fills the card background behind CTA text without competing with it, dark bg-surface base */}
+            <div
+              data-image-slot="cta-bg"
+              aria-hidden
+              className="absolute inset-0 w-full h-full rounded-2xl border border-dashed border-white/5 bg-surface/30 pointer-events-none"
+            />
             <h2 className="font-syne text-3xl font-bold text-text mb-3">
               Start generating for free
             </h2>
